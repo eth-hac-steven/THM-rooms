@@ -1,2 +1,2 @@
 # THM-rooms
-ths s a repo for all thngs THM rooms and ther solutons
+This is my repo for things like CTF HTB THM rooms and walkthroughs.

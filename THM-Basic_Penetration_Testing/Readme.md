@@ -76,7 +76,8 @@ ANS
 
  From the intial scan we can tell the answer to this question.<br>
  ANS : **SSH**
-### Question 8
+### Question 8 : Enumerate the machine to find any vectors for privilege escalation
+**No Answer Needed**
 
 ### Question 9 : What is the name of the other user you found(all lower case)?
  From the **enum4linux** command output we see that there is a second user.
@@ -90,7 +91,7 @@ ANS
 ### Question 11 : What is the final password you obtain? 
   Using the obtained credentials we can SSH into the Target system.
 
-  ![second_passed](images/6-20260417141324.png)
+  ![second_passwd](images/6-20260417141324.png)
    
 now we are logged in as Jan on your target machine. 
 We continue the search 
@@ -99,7 +100,7 @@ We continue the search
 cd home 
 ls 
 ```
- ![users account found](images/7-20260417161725.png)
+ ![snooping](images/7-20260417161725.png)
 
 Now let’s move into kay’s directory and list all the contents.
 
@@ -113,7 +114,7 @@ The hidden directory ‘.ssh’ is what we need, let’s cd into that.
 cd .ssh  
 ls -lsa
 ```
- ![users account found](images/8-20260417162136.png)
+ ![user kay file](images/8-20260417162136.png)
 
 
 Here, in /home/kay/.ssh, we can see three files:
@@ -176,11 +177,11 @@ ssh -i id_rsa kay@10.128.137.142
 
 This command tells SSH to use the specified private key for authentication instead of password-based login. When prompted enter the passphrase you just discovered using John the Ripper.
 
-![users account found](images/13-20260417164353.png)
+![id-rsa](images/13-20260417164353.png)
 
 Once you enter the passphrase and hit enter you will be logged in as kay.  
 
-![users account found](images/14-20260417164438.png)
+![using the second creds](images/14-20260417164438.png)
 
 From here just list the contents of your directory. The flag can be found in the **_pass.bak_** file.
 
